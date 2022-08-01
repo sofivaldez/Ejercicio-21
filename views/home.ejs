@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>EJ21 Blog</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script
@@ -31,7 +31,7 @@
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.html">EJ21 Blog</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -87,7 +87,6 @@
               <h2 class="post-title"><%= article.title %></h2>
               <h3 class="post-subtitle"><%= article.content.slice(0, 80) + '...' %></h3>
               <h4>Posted by 'usuario' on <%= format(article.createdAt, `MMMM dd',' yyyy `) %></h4>
-              // falta agregarle formato a la fecha
             </a>
           </div>
           <hr class="my-4" />

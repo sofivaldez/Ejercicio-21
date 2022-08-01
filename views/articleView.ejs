@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Clean Blog - Start Bootstrap Theme</title>
+    <title>EJ21 Blog</title>
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Font Awesome icons (free version)-->
     <script
@@ -30,13 +30,13 @@
       rel="stylesheet"
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
-    /> --
+    /> -->
   </head>
   <body>
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
       <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="index.html">Start Bootstrap</a>
+        <a class="navbar-brand" href="index.html">EJ21 Blog</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -68,9 +68,9 @@
       </div>
     </nav>
     <!-- Page Header-->
-    <header class="masthead" style="background-image: url('../public/assets/img/post-bg.jpg')">
+    <header class="masthead" style="background-image: url('/img/<%= article.imageName %> ')">
       <div class="container position-relative px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-start">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="post-heading">
               <h1><%= article.title %></h1>
@@ -88,22 +88,23 @@
     <!-- Post Content-->
     <article class="my-4">
       <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-start">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="d-flex col-md-10 col-lg-8 col-xl-7">
             <p><%= article.content %></p>
           </div>
-          <img src="/img/<%= article.imageName %> " alt="" />
+          <img src="" alt="" />
         </div>
         <div class="row">
           <form action="">
-            <div class="input-group mb-3 w-50">
-              <span class="input-group-text" id="inputGroup-sizing-lg">Deja tu comentario</span>
+            <div class="w-75 m-auto d-flex">
               <input
                 type="text"
                 class="form-control"
                 aria-label="Sizing example input"
                 aria-describedby="inputGroup-sizing-lg"
+                placeholder="Deja tu comentario"
               />
+              <button class="btn btn-success rounded ms-1">Enviar</button>
             </div>
           </form>
         </div>
