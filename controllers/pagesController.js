@@ -5,7 +5,7 @@ const diaCreacion = format(new Date(), `MMMM dd',' yyyy `);
 async function showHome(req, res) {
   const articles = await Article.findAll();
   // console.log(articles);
-  res.render("home", { articles });
+  res.render("home", { articles, format });
 }
 
 async function showContact(req, res) {

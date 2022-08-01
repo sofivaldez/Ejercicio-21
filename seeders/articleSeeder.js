@@ -1,4 +1,5 @@
 const { faker } = require("@faker-js/faker");
+const { bg } = require("date-fns/locale");
 const { Article } = require("../models");
 
 faker.locale = "es";
@@ -10,6 +11,7 @@ module.exports = async () => {
     articles.push({
       title: faker.lorem.sentence(5),
       content: faker.lorem.paragraphs(),
+      imageName: "post-bg.jpg",
     });
   }
 
