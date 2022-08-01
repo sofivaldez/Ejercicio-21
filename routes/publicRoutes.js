@@ -7,6 +7,6 @@ const { show } = require("../controllers/articleController");
 // ...
 
 publicRouter.get("/home", showHome);
-publicRouter.get("/article/:id", show);
+publicRouter.get("/articles/:id", show);
 
 module.exports = publicRouter;
