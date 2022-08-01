@@ -1,7 +1,10 @@
 const { Article } = require("../models");
+const { format } = require("date-fns");
+const diaCreacion = format(new Date(), `MMMM dd',' yyyy `);
 
 async function showHome(req, res) {
   const articles = await Article.findAll();
+  // console.log(articles);
   res.render("home", { articles });
 }
 
