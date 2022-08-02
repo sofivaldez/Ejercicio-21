@@ -1,9 +1,12 @@
-const { Article } = require("../models");
+const { Article, User, Comment } = require("../models");
+
 const { format } = require("date-fns");
 
 // Muestra los articulos por su id.
 async function show(req, res) {
-  const article = await Article.findByPk(req.params.id);
+  const article = await Article.findByPk(req.params.id, { include: [User, Comment] });
+  // return res.json(article);
+  // await User.findByPK(article.userId)
   res.render("articleView", { article, format });
 }
 // Muestra la lista de articulos en la tabla.
@@ -25,9 +28,9 @@ async function edit(req, res) {}
 async function update(req, res) {}
 
 async function destroy(req, res) {
-  const id = await Article.destroy(req.params.id);
+  await Article.destroy({ where: { id: req.params.id } });
 
-  res.redirect("/", { id });
+  res.redirect("/admin");
 }
 
 module.exports = {
