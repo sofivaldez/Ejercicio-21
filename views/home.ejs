@@ -54,7 +54,10 @@
             <a href="http://localhost:3000/articles/1">
               <h2 class="post-title"><%= article.title %></h2>
               <h3 class="post-subtitle"><%= article.content.slice(0, 80) + '...' %></h3>
-              <h4>Posted by 'usuario' on <%= format(article.createdAt, `MMMM dd',' yyyy `) %></h4>
+              <h4>
+                Posted by <%= article.user.firstname %> <%= article.user.lastname %> on <%=
+                format(article.createdAt, `MMMM dd',' yyyy `) %>
+              </h4>
             </a>
           </div>
           <hr class="my-4" />

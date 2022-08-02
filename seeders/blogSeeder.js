@@ -5,17 +5,6 @@ const { Article, User, Comment } = require("../models");
 faker.locale = "es";
 
 module.exports = async () => {
-  const articles = [];
-
-  for (let i = 0; i < 30; i++) {
-    articles.push({
-      title: faker.lorem.sentence(5),
-      content: faker.lorem.paragraphs(),
-      imageName: "post-bg.jpg",
-    });
-  }
-
-  await Article.bulkCreate(articles);
   // Seeder de usuarios.
   const users = [];
 
@@ -29,12 +18,28 @@ module.exports = async () => {
 
   await User.bulkCreate(users);
 
+  // Seeder de articulos
+  const articles = [];
+
+  for (let i = 0; i < 30; i++) {
+    articles.push({
+      title: faker.lorem.sentence(5),
+      content: faker.lorem.paragraphs(),
+      imageName: "post-bg.jpg",
+      userId: Math.floor(Math.random() * 30) + 1,
+    });
+  }
+
+  await Article.bulkCreate(articles);
+
   // Seeder de comentarios
   const comments = [];
 
   for (let i = 0; i < 30; i++) {
     comments.push({
       content: faker.lorem.paragraphs(10),
+      articleId: Math.floor(Math.random() * 30) + 1,
+      userId: Math.floor(Math.random() * 30) + 1,
     });
   }
 

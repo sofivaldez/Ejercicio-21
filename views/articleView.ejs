@@ -45,7 +45,7 @@
 
               <span class="meta fst-italic">
                 Posted by
-                <a href="#!"><%= article.user.firstname %> </a>
+                <a href="#!"><%= article.user.firstname%> <%= article.user.lastname %></a>
                 on <%= format(article.createdAt, `MMMM dd',' yyyy `) %>
               </span>
             </div>
