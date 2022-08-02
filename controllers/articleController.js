@@ -18,19 +18,19 @@ async function tableShowArticle(req, res) {
 
 // Show the form for creating a new resource
 async function create(req, res) {
-  const form = formidable({
-    multiples: true,
-    keepExtensions: true,
-    uploadDir: __dirname + "/../public/img",
-  });
+  // const form = await formidable({
+  //   multiples: true,
+  //   keepExtensions: true,
+  //   uploadDir: __dirname + "/../public/img",
+  // });
 
-  form.parse(req, (error, fields, files) => {
-    res.json({
-      titleArticle: fields.titleArticle,
-      contentArticle: fields.contentArticle,
-      imgArticle: files.imgArticle.newFilename,
-    });
-  });
+  // form.parse(req, (error, fields, files) => {
+  //   res.json({
+  //     titleArticle: fields.titleArticle,
+  //     contentArticle: fields.contentArticle,
+  //     imgArticle: files.imgArticle.newFilename,
+  //   });
+  // });
   res.render("createArticle");
 }
 
