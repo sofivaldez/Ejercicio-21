@@ -1,12 +1,18 @@
-const { Article } = require("../models");
+const { Article, User, Comment } = require("../models");
 
-// Display a listing of the resource.
-async function index(req, res) {}
+const { format } = require("date-fns");
 
-// Display the specified resource.
+// Muestra los articulos por su id.
 async function show(req, res) {
-  const article = await Article.findByPk(req.params.id);
-  res.render("articleView", { article });
+  const article = await Article.findByPk(req.params.id, { include: [User, Comment] });
+  // return res.json(article);
+  // await User.findByPK(article.userId)
+  res.render("articleView", { article, format });
+}
+// Muestra la lista de articulos en la tabla.
+async function tableShowArticle(req, res) {
+  const articles = await Article.findAll();
+  res.render("adminView", { articles, format });
 }
 
 // Show the form for creating a new resource
@@ -21,14 +27,14 @@ async function edit(req, res) {}
 // Update the specified resource in storage.
 async function update(req, res) {}
 
-// Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  await Article.destroy({ where: { id: req.params.id } });
 
-// Otros handlers...
-// ...
+  res.redirect("/admin");
+}
 
 module.exports = {
-  index,
+  tableShowArticle,
   show,
   create,
   store,
