@@ -3,6 +3,7 @@ const publicRouter = express.Router();
 
 const { showHome } = require("../controllers/pagesController");
 const { show } = require("../controllers/articleController");
+const { create } = require("../controllers/articleController");
 
 publicRouter.get("/home", showHome);
 publicRouter.get("/articles/:id", show);
