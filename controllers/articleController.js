@@ -1,12 +1,15 @@
 const { Article } = require("../models");
+const { format } = require("date-fns");
 
-// Display a listing of the resource.
-async function index(req, res) {}
-
-// Display the specified resource.
+// Muestra los articulos por su id.
 async function show(req, res) {
   const article = await Article.findByPk(req.params.id);
-  res.render("articleView", { article });
+  res.render("articleView", { article, format });
+}
+// Muestra la lista de articulos en la tabla.
+async function tableShowArticle(req, res) {
+  const articles = await Article.findAll();
+  res.render("adminView", { articles, format });
 }
 
 // Show the form for creating a new resource
@@ -21,14 +24,14 @@ async function edit(req, res) {}
 // Update the specified resource in storage.
 async function update(req, res) {}
 
-// Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  const id = await Article.destroy(req.params.id);
 
-// Otros handlers...
-// ...
+  res.redirect("/", { id });
+}
 
 module.exports = {
-  index,
+  tableShowArticle,
   show,
   create,
   store,
