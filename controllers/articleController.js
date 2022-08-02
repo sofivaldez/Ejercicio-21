@@ -6,9 +6,9 @@ const { format } = require("date-fns");
 // Muestra los articulos por su id.
 async function show(req, res) {
   const article = await Article.findByPk(req.params.id, { include: [User, Comment] });
-  return res.json(article);
+  // return res.json(article);
   // await User.findByPK(article.userId)
-  // res.render("articleView", { article, format });
+  res.render("articleView", { article, format });
 }
 // Muestra la lista de articulos en la tabla.
 async function tableShowArticle(req, res) {
@@ -21,7 +21,7 @@ async function create(req, res) {
   const form = formidable({
     multiples: true,
     keepExtensions: true,
-    uploadDir: __dirname + "/public/img",
+    uploadDir: __dirname + "/../public/img",
   });
 
   form.parse(req, (error, fields, files) => {

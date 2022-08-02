@@ -37,9 +37,10 @@ module.exports = async () => {
 
   for (let i = 0; i < 30; i++) {
     comments.push({
-      content: faker.lorem.paragraphs(10),
+      content: faker.lorem.sentence(5),
       articleId: Math.floor(Math.random() * 30) + 1,
       userId: Math.floor(Math.random() * 30) + 1,
+      firstname: faker.name.firstName(),
     });
   }
 

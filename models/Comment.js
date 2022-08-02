@@ -6,11 +6,14 @@ module.exports = (sequelize, Model, DataTypes) => {
       content: {
         type: DataTypes.TEXT,
       },
+      firstname: {
+        type: DataTypes.TEXT,
+      },
     },
     {
       sequelize,
       modelName: "comment",
-    }
+    },
   );
 
   return Comment;
