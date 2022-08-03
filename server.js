@@ -4,6 +4,8 @@ const express = require("express");
 const methodOverride = require("method-override");
 const routes = require("./routes");
 const dbInitialSetup = require("./dbInitialSetup");
+const session = require("express-session");
+const passport = require("passport");
 const APP_PORT = process.env.APP_PORT || 3000;
 const app = express();
 
@@ -11,6 +13,14 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
+app.use(
+  session({
+    secret: process.env.APP_SESSION_SECRET,
+    resave: false, // Docs: "The default value is true, but using the default has been deprecated".
+    saveUninitialized: false, // Docs: "The default value is true, but using the default has been deprecated".
+  }),
+);
+app.use(passport.session());
 
 routes(app);
 
