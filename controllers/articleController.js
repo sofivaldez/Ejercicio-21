@@ -40,34 +40,35 @@ async function store(req, res) {
   });
 }
 
-// app.post("/register", (req, res) => {
-//   const form = formidable({
-//     multiples: true,
-//     keepExtensions: true,
-//     uploadDir: __dirname + "/public/avatars",
-//   });
-
-//   form.parse(req, (error, fields, files) => {
-//     res.json({
-//       firstname: fields.firstname,
-//       avatar: files.avatar.newFilename,
-//     });
-//   });
-// });
-
 // Show the form for editing the specified resource.
-async function edit(req, res) {}
+async function edit(req, res) {
+  const article = await Article.findByPk(req.params.id);
+  res.render("editArticle", { article });
+}
 
 // Update the specified resource in storage.
-async function update(req, res) {}
-
+async function update(req, res) {
+  await Article.update({
+    title: fields.title,
+    content: fields.content,
+  });
+  res.redirect("/");
+}
 async function destroy(req, res) {
   await Article.destroy({ where: { id: req.params.id } });
 
   res.redirect("/admin");
 }
+async function storeComment(req, res) {
+  // const id = req.params.id
+  await Article.create({
+    comment: fields.comment,
+  });
+  res.redirect(`/articulos/${id}`);
+}
 
 module.exports = {
+  storeComment,
   tableShowArticle,
   show,
   create,
