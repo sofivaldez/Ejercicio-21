@@ -48,10 +48,14 @@ async function edit(req, res) {
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  await Article.update({
-    title: fields.title,
-    content: fields.content,
-  });
+  console.log(req.body);
+  await Article.update(
+    {
+      title: req.body.title,
+      content: req.body.content,
+    },
+    { where: { id: req.params.id } },
+  );
   res.redirect("/");
 }
 async function destroy(req, res) {
@@ -60,11 +64,16 @@ async function destroy(req, res) {
   res.redirect("/admin");
 }
 async function storeComment(req, res) {
-  // const id = req.params.id
-  await Article.create({
-    comment: fields.comment,
-  });
-  res.redirect(`/articulos/${id}`);
+  await Article.create(
+    {
+      comment: req.body.comment,
+    },
+    {
+      where: { id: req.params.id },
+    },
+  );
+
+  res.redirect("/articulos/:id");
 }
 
 module.exports = {

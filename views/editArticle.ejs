@@ -41,11 +41,7 @@
     <article class="my-4">
       <div class="container px-4 px-lg-5">
         <div class="row">
-          <form
-            action="/articles/<%= article.id %>?_method=PUT"
-            enctype="multipart/form-data"
-            method="post"
-          >
+          <form method="post" action="/articles/<%= article.id %>?_method=PUT">
             <input
               type="text"
               class="form-control my-3"
