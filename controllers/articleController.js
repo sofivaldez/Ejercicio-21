@@ -7,6 +7,7 @@ const { format } = require("date-fns");
 async function show(req, res) {
   const article = await Article.findByPk(req.params.id, { include: [User, Comment] });
   // return res.json(article);
+
   // await User.findByPK(article.userId)
   res.render("articleView", { article, format });
 }
@@ -64,16 +65,13 @@ async function destroy(req, res) {
   res.redirect("/admin");
 }
 async function storeComment(req, res) {
-  await Article.create(
-    {
-      comment: req.body.comment,
-    },
-    {
-      where: { id: req.params.id },
-    },
-  );
+  console.log("ok ok oks");
+  await Comment.create({
+    content: req.body.content,
+    articleId: req.params.id,
+  });
 
-  res.redirect("/articulos/:id");
+  res.redirect("/articles/" + req.params.id);
 }
 
 module.exports = {
