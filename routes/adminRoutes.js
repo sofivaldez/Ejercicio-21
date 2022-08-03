@@ -4,7 +4,6 @@ const articleController = require("../controllers/articleController");
 
 adminRouter.get("/", articleController.tableShowArticle);
 
-adminRouter.get("/eliminar/:id", articleController.destroy);
-adminRouter.get("/crear", articleController.create);
-
+adminRouter.get("/articulos/crear", articleController.create);
+adminRouter.get("/articulos/editar/:id", articleController.edit);
 module.exports = adminRouter;
