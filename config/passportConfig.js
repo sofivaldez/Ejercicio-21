@@ -1,5 +1,6 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
+const bcrypt = require("bcrypt");
 const { User } = require("../models");
 passport.use(
   new LocalStrategy({ usernameField: "email" }, async function (email, password, done) {
@@ -12,7 +13,8 @@ passport.use(
       console.log("usuario inexistente");
       return done(null, false, { message: "no existe ese usuario" });
     }
-    if (user.password !== password) {
+    const verifyPassword = await bcrypt.compare(password, user.password);
+    if (!verifyPassword) {
       console.log("contraseña incorrecta");
       return done(null, false, { message: "contraseña incorrecta" });
     }
