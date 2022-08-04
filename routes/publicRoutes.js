@@ -1,8 +1,5 @@
 const express = require("express");
 const publicRouter = express.Router();
-const passport = require("passport");
-
-const initializePassport = require("../controllers/passportConfig")
 
 const { showHome } = require("../controllers/pagesController");
 const { show } = require("../controllers/articleController");
