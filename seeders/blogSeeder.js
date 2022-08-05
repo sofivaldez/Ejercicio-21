@@ -10,7 +10,7 @@ module.exports = async () => {
 
   for (let i = 0; i < 30; i++) {
     users.push({
-      firstname: faker.name.firstName(),
+      username: faker.name.firstName(),
       lastname: faker.name.lastName(),
       email: faker.internet.email(),
     });
@@ -21,7 +21,7 @@ module.exports = async () => {
   // Seeder de articulos
   const articles = [];
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 100; i++) {
     articles.push({
       title: faker.lorem.sentence(5),
       content: faker.lorem.paragraphs(),
@@ -35,7 +35,7 @@ module.exports = async () => {
   // Seeder de comentarios
   const comments = [];
 
-  for (let i = 0; i < 30; i++) {
+  for (let i = 0; i < 500; i++) {
     comments.push({
       content: faker.lorem.sentence(5),
       articleId: Math.floor(Math.random() * 30) + 1,

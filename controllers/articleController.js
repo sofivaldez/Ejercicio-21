@@ -7,7 +7,7 @@ const { format } = require("date-fns");
 async function show(req, res) {
   const article = await Article.findByPk(req.params.id, { include: [User, Comment] });
   // return res.json(article);
-
+  console.log(article);
   // await User.findByPK(article.userId)
   res.render("articleView", { article, format });
 }

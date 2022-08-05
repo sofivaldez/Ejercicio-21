@@ -1,10 +1,11 @@
 const express = require("express");
 const adminRouter = express.Router();
 const articleController = require("../controllers/articleController");
+const authCheck = require("../middlewares/verifyNotAuthenticated");
 
-adminRouter.get("/", articleController.tableShowArticle);
+adminRouter.get("/", authCheck, articleController.tableShowArticle);
 
-adminRouter.get("/articulos/crear", articleController.create);
-adminRouter.get("/articulos/editar/:id", articleController.edit);
+adminRouter.get("/articulos/crear", authCheck, articleController.create);
+adminRouter.get("/articulos/editar/:id", authCheck, articleController.edit);
 
 module.exports = adminRouter;
